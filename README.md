@@ -110,13 +110,6 @@ npm install
 npm run dev
 ```
 
-## Deployment
-
-Aplikasi dapat di-deploy melalui Lovable:
-1. Buka project di [Lovable](https://lovable.dev)
-2. Klik tombol **Share** → **Publish**
-3. Aplikasi akan tersedia di URL publik
-
 ## Penggunaan
 
 ### Setup Awal
@@ -146,8 +139,8 @@ Aplikasi dapat di-deploy melalui Lovable:
 
 ## Lisensi
 
-Hak Cipta © 2024. All rights reserved.
+Hak Cipta © 2025. All rights reserved.
 
 ---
 
-Dibuat dengan ❤️ menggunakan [Lovable](https://lovable.dev)
+Dibuat dengan ❤️

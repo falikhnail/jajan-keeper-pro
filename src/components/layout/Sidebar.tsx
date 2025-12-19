@@ -19,20 +19,21 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 
-// Menu untuk semua user (kasir & admin)
-const kasirItems = [
-  { to: '/kasir', icon: ShoppingCart, label: 'Kasir' },
-];
-
-// Menu tambahan untuk admin saja
+// Menu untuk semua user (kasir & admin) - urutan: Dashboard, Kasir, lalu menu admin lainnya
 const adminNavItems = [
   { to: '/', icon: LayoutDashboard, label: 'Dashboard' },
+  { to: '/kasir', icon: ShoppingCart, label: 'Kasir' },
   { to: '/produk', icon: Package, label: 'Produk' },
   { to: '/supplier', icon: Users, label: 'Supplier' },
   { to: '/stok-opname', icon: ClipboardList, label: 'Stok Opname' },
   { to: '/laporan', icon: BarChart3, label: 'Laporan' },
   { to: '/backup', icon: HardDriveDownload, label: 'Backup & Import' },
   { to: '/install', icon: Download, label: 'Install App' },
+];
+
+// Menu kasir only (untuk role kasir)
+const kasirOnlyItems = [
+  { to: '/kasir', icon: ShoppingCart, label: 'Kasir' },
 ];
 
 const adminItems = [
@@ -103,8 +104,8 @@ export function Sidebar() {
 
           {/* Navigation */}
           <nav className="flex-1 space-y-2 overflow-y-auto p-4">
-            {/* Admin Navigation - show all menus */}
-            {isAdmin && (
+            {/* Admin Navigation - show all menus with Kasir after Dashboard */}
+            {isAdmin ? (
               <>
                 {adminNavItems.map((item) => (
                   <NavLink
@@ -118,26 +119,8 @@ export function Sidebar() {
                     <span className="font-medium">{item.label}</span>
                   </NavLink>
                 ))}
-              </>
-            )}
 
-            {/* Kasir Menu - accessible by all */}
-            {kasirItems.map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                className="flex items-center gap-3 rounded-lg px-4 py-3 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
-                activeClassName="bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground"
-                onClick={() => setIsOpen(false)}
-              >
-                <item.icon className="h-5 w-5" />
-                <span className="font-medium">{item.label}</span>
-              </NavLink>
-            ))}
-
-            {/* Admin Section */}
-            {isAdmin && (
-              <>
+                {/* Admin Section */}
                 <div className="my-4 border-t border-border pt-4">
                   <p className="mb-2 px-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                     Admin
@@ -156,6 +139,20 @@ export function Sidebar() {
                   ))}
                 </div>
               </>
+            ) : (
+              // Kasir only - show only Kasir menu
+              kasirOnlyItems.map((item) => (
+                <NavLink
+                  key={item.to}
+                  to={item.to}
+                  className="flex items-center gap-3 rounded-lg px-4 py-3 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                  activeClassName="bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <item.icon className="h-5 w-5" />
+                  <span className="font-medium">{item.label}</span>
+                </NavLink>
+              ))
             )}
           </nav>
 

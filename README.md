@@ -1,73 +1,153 @@
-# Welcome to your Lovable project
+# Sistem POS (Point of Sale)
 
-## Project info
+Aplikasi kasir dan manajemen toko berbasis web dengan fitur lengkap untuk mengelola penjualan, stok, supplier, dan laporan.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Fitur Utama
 
-## How can I edit this code?
+### 🛒 Kasir (POS)
+- Transaksi penjualan cepat dengan pencarian produk
+- Keranjang belanja dengan manajemen kuantitas
+- Dukungan metode pembayaran tunai dan non-tunai
+- Cetak struk otomatis
 
-There are several ways of editing your application.
+### 📦 Manajemen Produk
+- Tambah, edit, dan hapus produk
+- Kategori produk
+- Harga jual dan harga modal
+- Pelacakan stok otomatis
 
-**Use Lovable**
+### 🏢 Manajemen Supplier
+- Data supplier lengkap (nama, telepon, alamat)
+- Hubungan produk dengan supplier
+- Catatan dan keterangan supplier
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+### 📊 Stok Opname
+- Pengecekan stok fisik vs sistem
+- Pencatatan selisih stok
+- Catatan hasil opname
 
-Changes made via Lovable will be committed automatically to this repo.
+### 💰 Deposit Supplier
+- Pencatatan titipan barang dari supplier
+- Status pembayaran deposit
+- Riwayat deposit per supplier
 
-**Use your preferred IDE**
+### 📈 Laporan
+- Laporan penjualan harian/mingguan/bulanan
+- Laporan laba rugi
+- Grafik pendapatan
+- Export laporan ke PDF/Excel
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 💾 Backup & Sinkronisasi
+- **Sinkronisasi Cloud**: Upload dan download data ke cloud
+- **Backup JSON**: Export/import data dalam format JSON
+- **Export Excel**: Export semua data ke file Excel
+- Reset data untuk memulai dari awal
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 👥 Manajemen User
+- Role admin dan kasir
+- Admin: akses penuh ke semua fitur
+- Kasir: akses terbatas hanya ke menu kasir
 
-Follow these steps:
+### 📱 Progressive Web App (PWA)
+- Dapat diinstall di perangkat mobile/desktop
+- Akses offline
+- Notifikasi push
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+## Teknologi
+
+| Teknologi | Kegunaan |
+|-----------|----------|
+| React 18 | Frontend framework |
+| TypeScript | Type-safe JavaScript |
+| Vite | Build tool & dev server |
+| Tailwind CSS | Utility-first CSS framework |
+| shadcn/ui | Komponen UI |
+| Zustand | State management |
+| Supabase | Backend & database cloud |
+| React Router | Navigasi |
+| Recharts | Grafik dan chart |
+| jsPDF | Generate PDF |
+| xlsx | Export Excel |
+
+## Struktur Database
+
+### Tabel Utama
+- `products` - Data produk
+- `suppliers` - Data supplier
+- `transactions` - Riwayat transaksi
+- `stock_opnames` - Catatan stok opname
+- `supplier_deposits` - Deposit/titipan supplier
+- `profiles` - Profil pengguna
+- `user_roles` - Role pengguna (admin/kasir)
+
+## Role & Akses
+
+| Fitur | Admin | Kasir |
+|-------|-------|-------|
+| Dashboard | ✅ | ❌ |
+| Kasir | ✅ | ✅ |
+| Produk | ✅ | ❌ |
+| Supplier | ✅ | ❌ |
+| Stok Opname | ✅ | ❌ |
+| Laporan | ✅ | ❌ |
+| Backup & Import | ✅ | ❌ |
+| Install App | ✅ | ❌ |
+| Manajemen User | ✅ | ❌ |
+
+## Instalasi & Pengembangan
+
+```bash
+# Clone repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# Masuk ke direktori project
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Jalankan development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Deployment
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Aplikasi dapat di-deploy melalui Lovable:
+1. Buka project di [Lovable](https://lovable.dev)
+2. Klik tombol **Share** → **Publish**
+3. Aplikasi akan tersedia di URL publik
 
-**Use GitHub Codespaces**
+## Penggunaan
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Setup Awal
+1. Akses aplikasi dan buat akun admin pertama
+2. Login dengan kredensial admin
+3. Tambahkan supplier di menu **Supplier**
+4. Tambahkan produk di menu **Produk**
+5. Mulai transaksi di menu **Kasir**
 
-## What technologies are used for this project?
+### Menambah User Kasir
+1. Buka menu **Manajemen User**
+2. Klik **Tambah User**
+3. Isi username, nama lengkap, password
+4. Pilih role **Kasir**
 
-This project is built with:
+### Sinkronisasi Data
+1. Buka menu **Backup & Import**
+2. Tab **Sinkronisasi Cloud**
+3. Klik **Upload ke Cloud** untuk menyimpan data
+4. Klik **Download dari Cloud** untuk mengambil data
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Backup Manual
+1. Buka menu **Backup & Import**
+2. Tab **Backup & Restore**
+3. Klik **Export Backup JSON** untuk download
+4. Untuk restore, klik **Pilih File Backup** dan pilih file JSON
 
-## How can I deploy this project?
+## Lisensi
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+Hak Cipta © 2024. All rights reserved.
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Dibuat dengan ❤️ menggunakan [Lovable](https://lovable.dev)
